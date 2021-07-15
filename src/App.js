@@ -23,41 +23,41 @@ function App() {
   async function createNote() {
     if (!formData.name || !formData.description) return;
     await API.graphql({ query: createNoteMutation, variables: { input: formData } });
-    setNotes([ ...notes, formData ]);
+    setNotes([...notes, formData]);
     setFormData(initialFormState);
   }
 
   async function deleteNote({ id }) {
     const newNotesArray = notes.filter(note => note.id !== id);
     setNotes(newNotesArray);
-    await API.graphql({ query: deleteNoteMutation, variables: { input: { id } }});
+    await API.graphql({ query: deleteNoteMutation, variables: { input: { id } } });
   }
 
   return (
     <div className="App">
       <h1>MGW Notes App</h1>
       <input
-        onChange={e => setFormData({ ...formData, 'name': e.target.value})}
+        onChange={e => setFormData({ ...formData, 'name': e.target.value })}
         placeholder="Note name"
         value={formData.name}
       />
       <input
-        onChange={e => setFormData({ ...formData, 'description': e.target.value})}
+        onChange={e => setFormData({ ...formData, 'description': e.target.value })}
         placeholder="Note description"
         value={formData.description}
       />
       <button onClick={createNote}>Create Note</button>
-      <div style={{marginBottom: 30}}>
+      <ul style={{ marginBottom: 30 }}>
         {
           notes.map(note => (
-            <div key={note.id || note.name}>
-              <h2>{note.name}</h2>
+            <li key={note.id || note.name}>
+              <h3>{note.name}</h3>
               <p>{note.description}</p>
               <button onClick={() => deleteNote(note)}>Delete note</button>
-            </div>
+            </li>
           ))
         }
-      </div>
+      </ul>
       <AmplifySignOut />
     </div>
   );
