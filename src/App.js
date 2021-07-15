@@ -7,7 +7,7 @@ function App() {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
-          MGW test
+          MGW test v2
         </p>
       </header>
     </div>
