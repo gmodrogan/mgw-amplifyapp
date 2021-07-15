@@ -1,0 +1,10 @@
+{
+  "auth": {
+    "mgwamplifyappf26d0bef": {
+      "service": "Cognito",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": [],
+      "customAuth": false
+    }
+  }
+}
