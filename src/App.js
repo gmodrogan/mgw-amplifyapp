@@ -47,12 +47,12 @@ function App() {
         value={formData.description}
       />
       <button onClick={createNote}>Create Note</button>
+      <h3>Note list</h3>
       <ul style={{ marginBottom: 30 }}>
         {
           notes.map(note => (
             <li key={note.id || note.name}>
-              <h3>{note.name}</h3>
-              <p>{note.description}</p>
+              {note.name} (<span>{note.description})</span>)
               <button onClick={() => deleteNote(note)}>Delete note</button>
             </li>
           ))
